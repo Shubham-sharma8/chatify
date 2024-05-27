@@ -1,12 +1,9 @@
 ![Build and Deploy Full Stack ChatPDF Clone](https://github.com/Elliott-Chong/chatpdf-yt/assets/77007117/7fcee290-ca52-46ee-ae82-3490f505270b)
 
-[Link to YouTube Tutorial](https://www.youtube.com/watch?v=bZFedu-0emE)
 
 # Overview
 
-Welcome to the "chatpdf-yt" project, a comprehensive chat application with PDF integration. This project is designed to provide a seamless chat experience where users can upload PDF files, create chats around them, and interact with an AI assistant. The AI assistant uses the OpenAI API to generate responses based on the chat context. The application also includes a subscription feature, where users can subscribe to access premium features. The subscription process is handled using Stripe for payments and webhooks for event processing.
-
-hi this is a test change!
+Welcome to the "pdf-cogify" project, a comprehensive chat application with PDF integration. This project is designed to provide a seamless chat experience where users can upload PDF files, create chats around them, and interact with an AI assistant. The AI assistant uses the OpenAI API to generate responses based on the chat context.
 
 # Technologies and Frameworks
 
@@ -40,13 +37,13 @@ Follow the steps below to install and setup the project:
    Open your terminal and run the following command:
 
    ```bash
-   git clone https://github.com/Elliott-Chong/chatpdf-yt.git
+   git clone [https://github.com/Elliott-Chong/chatpdf-yt.git](https://github.com/Shubham-sharma8/chatify)
    ```
 
 2. **Navigate to the project directory**
 
    ```bash
-   cd chatpdf-yt
+   cd chatify
    ```
 
 3. **Install Node.js**
@@ -77,5 +74,116 @@ Follow the steps below to install and setup the project:
 
     Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+   
+# Setting Up an Amazon S3 Bucket
 
-# chatify
+This guide will walk you through the steps to create and configure an Amazon S3 bucket for your project.
+
+## Step 1: Create an AWS Account
+
+1. Go to the [AWS Management Console](https://aws.amazon.com/).
+2. Click on "Create an AWS Account" and follow the instructions to set up your account.
+
+## Step 2: Create an S3 Bucket
+
+1. Open the S3 console at https://s3.console.aws.amazon.com/s3/.
+2. Click "Create bucket".
+3. Enter a unique bucket name (e.g., `cogify`), choose a region, and click "Create bucket".
+
+## Step 3: Configure Public Access
+
+1. Go to the "Permissions" tab of your bucket.
+2. In the "Block public access" section, uncheck the "Block all public access" option.
+3. Confirm the changes to allow public access.
+
+## Step 4: Update Bucket Policy
+
+1. Go to the "Permissions" tab and find the "Bucket policy" section.
+2. Click "Edit" and paste the following JSON policy:
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "PublicReadGetObject",
+                "Effect": "Allow",
+                "Principal": "*",
+                "Action": "s3:GetObject",
+                "Resource": "arn:aws:s3:::cogify/*"
+            }
+        ]
+    }
+    ```
+3. Save the policy.
+
+## Step 5: Configure Cross-Origin Resource Sharing (CORS)
+
+1. In the "Permissions" tab, find the "CORS configuration" section.
+2. Click "Edit" and add the following configuration:
+    ```json
+    [
+        {
+            "AllowedHeaders": [
+                "*"
+            ],
+            "AllowedMethods": [
+                "PUT",
+                "POST",
+                "DELETE",
+                "GET"
+            ],
+            "AllowedOrigins": [
+                "*"
+            ],
+            "ExposeHeaders": []
+        }
+    ]
+    ```
+3. Save the CORS configuration.
+
+## Step 6: Set Up IAM User and Permissions
+
+1. Go to the IAM console at https://console.aws.amazon.com/iam/.
+2. Click "Users" and then "Add user".
+3. Enter a username (e.g., `s3admin`), select "Programmatic access", and click "Next".
+4. Attach the `AmazonS3FullAccess` policy to the user.
+5. Complete the creation process to generate an `Access key ID` and `Secret access key`.
+
+## Step 7: Configure Environment Variables
+
+1. Save the `Access key ID` and `Secret access key` as environment variables in your `.env` file:
+    ```
+    NEXT_PUBLIC_S3_ACCESS_KEY_ID=YOUR_ACCESS_KEY_ID
+    NEXT_PUBLIC_S3_SECRET_ACCESS_KEY=YOUR_SECRET_ACCESS_KEY
+    ```
+
+Make sure to replace `YOUR_ACCESS_KEY_ID` and `YOUR_SECRET_ACCESS_KEY` with your actual keys.
+
+That's it! Your S3 bucket is now set up and configured for public access, with the necessary IAM permissions and environment variables ready for your application.
+
+
+# Setting Up a Neon Database with PostgreSQL 15
+
+This guide will walk you through the steps to create and configure a Neon database with PostgreSQL 15 for your project.
+
+## Step 1: Create an Account on Neon.tech
+
+1. Go to [Neon.tech](https://neon.tech/).
+2. Click on "Sign Up" and follow the instructions to create your account.
+
+## Step 2: Create a New Database
+
+1. Once logged in, click on "Create New Project" or "New Project" button.
+2. Name your project (e.g., `my-project`).
+3. Choose "PostgreSQL 15" as the database version.
+4. Click on "Create Project" to set up your database.
+
+## Step 3: Access Your Database
+
+1. After the project is created, navigate to the "Databases" tab.
+2. copy the postgres URL
+
+```sh
+psql -h <your_host> -U <your_user> -d <your_database> -p <your_port>
+
+
