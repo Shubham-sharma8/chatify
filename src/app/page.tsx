@@ -42,7 +42,7 @@ export default async function Home() {
                     </div>
 
                     <p className="max-w-xl mt-1 text-lg text-slate-600">
-                        Experience seamless interaction with GPT-4.0, our Most Advanced AI chat service on your uploaded PDFs, without any interruption. We are based in openai&apos;gpt-4o and text-embedding-3-large. 
+                        Experience seamless interaction,with our Most Advanced AI chat service on your uploaded PDFs, without any interruption. We uses in openai&apos;GPT-4o and Text-embedding-3-large. 
                     </p>
 
                     <div className="w-full mt-4">
