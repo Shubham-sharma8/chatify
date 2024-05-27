@@ -193,6 +193,10 @@ This guide will walk you through the steps to create and configure a Neon databa
 
 ```sh
 psql -h <your_host> -U <your_user> -d <your_database> -p <your_port>
+```
 
+# Setup pinecone.
+Are you kidding me?
+Do it yourself at [pinecone](https://www.pinecone.io)
 
 
