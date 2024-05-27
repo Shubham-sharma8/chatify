@@ -20,7 +20,7 @@ Welcome to the "pdf-cogify" project, a comprehensive chat application with PDF i
 - Axios
 - Pinecone
 - Drizzle-kit
-- OpenAI Edge
+- OpenAI
 - Neon Database Serverless
 - Drizzle-orm/neon-http
 - @tanstack/react-query
@@ -63,8 +63,16 @@ Follow the steps below to install and setup the project:
 5. **Setup environment variables**
 
     Create a `.env` file in the root directory of your project and add the required environment variables.
+6. **Setup Database**
 
-6. **Run the project**
+    For building or developing with Drizzle Kit, use the following command:
+
+    ```bash
+    npx drizzle-kit push:pg
+    ```
+
+
+7. **Run the project**
 
     Now, you can run the project using the following command:
 
@@ -185,5 +193,6 @@ This guide will walk you through the steps to create and configure a Neon databa
 
 ```sh
 psql -h <your_host> -U <your_user> -d <your_database> -p <your_port>
+
 
 
