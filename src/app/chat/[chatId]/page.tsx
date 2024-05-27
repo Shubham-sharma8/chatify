@@ -38,7 +38,7 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
       </div>
       {/* pdf viewer */}
       <div className="p-4 overflow-auto flex-[5]">
-      <h3 className="text-xl top-2 font-semibold m-2">Please reload the page if the PDF doesn't load</h3>
+      <h3 className="text-xl top-2 font-semibold m-2">Please reload the page if the PDF doesn&apos;t load</h3>
 
         <PDFViewer pdf_url={currentChat?.pdfUrl || ""} />
       </div>
